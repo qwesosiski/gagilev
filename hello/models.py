@@ -14,9 +14,10 @@ class Subscription(models.Model):
             models.Index(fields=["price"]),
             models.Index(fields=["title"])
         ]
+    def __str__(self):
+      return f"{self.title}"
         
-    def str(self):
-        return f"{self.title}" 
+ 
 
 class User(models.Model):
     username = models.CharField("Имя пользователя", max_length=50)
@@ -35,7 +36,7 @@ class User(models.Model):
             models.Index(fields=["email"])
         ]
 
-    def str(self):
+    def __str__(self):
         return f"{self.username}"  
 
 class Chat(models.Model):
@@ -52,7 +53,7 @@ class Chat(models.Model):
             models.Index(fields=["name"]), 
         ]
 
-    def str(self):
+    def __str__(self):
         return f"{self.name}"  
 
 class Message(models.Model):
@@ -70,8 +71,9 @@ class Message(models.Model):
             models.Index(fields=["User_id"]), 
         ]
 
-    def str(self):
-        return f"Сообщение от {self.User_id} в {self.sending_time}"  
+    def __str__(self):
+        return f"Сообщение от {self.User_id} в {self.sending_time}"
+      
 class Channel(models.Model):
     User_id = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField("Описание", max_length=255) 
@@ -85,5 +87,5 @@ class Channel(models.Model):
             models.Index(fields=["name"]), 
         ]
 
-    def str(self):
+    def __str__(self):
         return f"{self.name}"

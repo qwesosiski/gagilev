@@ -3,6 +3,8 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Author)
-admin.site.register(Book)
-admin.site.register(Publisher)
+admin.site.register(Channel)
+admin.site.register(Message)
+admin.site.register(Chat)
+admin.site.register(User)
+admin.site.register(Subscription)
