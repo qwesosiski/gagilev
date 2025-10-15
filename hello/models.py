@@ -9,8 +9,7 @@ class Subscription(models.Model):
         verbose_name = "Подписка" 
         verbose_name_plural = "Подписки"
         ordering = ["price"] 
-        indexes = [
-            models.Index(fields=["validity_period"]), 
+        indexes = [ 
             models.Index(fields=["price"]),
             models.Index(fields=["title"])
         ]
@@ -32,15 +31,13 @@ class User(models.Model):
         ordering = ["username"]
         indexes = [
             models.Index(fields=["username"]),
-            models.Index(fields=["phone_number"]),
-            models.Index(fields=["email"])
         ]
 
     def __str__(self):
         return f"{self.username}"  
 
 class Chat(models.Model):
-    User_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    users = models.ManyToManyField(User)
     description = models.CharField("Описание", max_length=255)  
     data = models.CharField("Данные", max_length=255)  
     name = models.CharField("Имя", max_length=50)  
@@ -60,15 +57,15 @@ class Message(models.Model):
     User_id = models.ForeignKey(User, on_delete=models.CASCADE)
     sending_time = models.DateTimeField("Время отправки") 
     Chat_id = models.ForeignKey(Chat, on_delete=models.CASCADE)
+    message = models.CharField("Сообщение", max_length=500)
 
     class Meta:
         verbose_name = "Сообщение"
         verbose_name_plural = "Сообщения"
         ordering = ["sending_time"] 
         indexes = [
-            models.Index(fields=["sending_time"]),
-            models.Index(fields=["Chat_id"]),
-            models.Index(fields=["User_id"]), 
+            models.Index(fields=["Chat_id"]), 
+            models.Index(fields=["sending_time"]), 
         ]
 
     def __str__(self):
@@ -77,7 +74,7 @@ class Message(models.Model):
 class Channel(models.Model):
     User_id = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField("Описание", max_length=255) 
-    data = models.CharField("Данные", max_length=255) 
+    Message = models.ForeignKey(Message, ) 
     name = models.CharField("Имя", max_length=50) 
     class Meta:
         verbose_name = "Канал"
