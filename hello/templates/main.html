@@ -1,8 +1,47 @@
-{%extends "main.html"%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой облачный мессенджер</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chat-list">
+            <h3>Чаты</h3>
+            <div class="chat active">Влад</div>
+            <div class="chat">Костя</div>
+            <div class="chat">Вадя</div>
+            <div class="chat">Дота2пати</div>
+        </div>
 
-{%block main%}
-<h1>Каталог</h1>
-<div class="catalog-container">
-    ...
-</div>
-{%endblock%%}
+        <div class="chat-area">
+            <div class="chat-header">
+                <h3>Влад</h3>
+            </div>
+            
+            <div class="messages">
+                <div class="message other-message cloud">
+                    Когда в зал?
+                </div>
+                <div class="message my-message">
+                    Я болею, не могу пойти
+                </div>
+                <div class="message other-message cloud">
+                    Ты всегда болеешь надоел уже
+                </div>
+                <div class="message my-message">
+                    Извини что так получается
+                </div>
+                <div class="message other-message cloud">
+                    Ладно выздоравливай друг
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" class="message-input" placeholder="Введите сообщение...">
+                <button class="send-btn">Отправить</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
