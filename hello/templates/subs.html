@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumulus Premium - Облачный мессенджер</title>
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="../static/css/sub.css">
+</head>
+<body>
+    <div class="premium-container">
+        <!-- Хедер -->
+        <header class="premium-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">☁️</div>
+                    <div class="logo-text">
+                        <h1>Cumulus</h1>
+                        <span>Premium</span>
+                    </div>
+                </div>
+                <nav class="header-nav">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Назад к чату
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="premium-main">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h2>Перейдите на Cumulus Premium</h2>
+                    <p>Расширьте возможности вашего облачного общения с премиум-функциями</p>
+                    <div class="hero-features">
+                        <div class="feature-badge">
+                            <i class="fas fa-rocket"></i>
+                            <span>Улучшенная производительность</span>
+                        </div>
+                        <div class="feature-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Повышенная безопасность</span>
+                        </div>
+                        <div class="feature-badge">
+                            <i class="fas fa-infinity"></i>
+                            <span>Безлимитное облако</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Тарифные планы -->
+            <section class="pricing-section">
+                <div class="section-header">
+                    <h3>Выберите свой план</h3>
+                    <p>Все планы включают бесплатный пробный период на 7 дней</p>
+                </div>
+
+                <div class="pricing-switcher">
+                    <button class="switch-btn active" data-period="monthly">Ежемесячно</button>
+                    <button class="switch-btn" data-period="yearly">Ежегодно</button>
+                    <div class="discount-badge">Экономия 25%</div>
+                </div>
+
+                <div class="pricing-cards">
+                    <!-- Бесплатный тариф -->
+                    <div class="pricing-card free">
+                        <div class="card-header">
+                            <h4>Бесплатно</h4>
+                            <div class="price">
+                                <span class="amount">0₽</span>
+                                <span class="period">/навсегда</span>
+                            </div>
+                        </div>
+                        <ul class="features-list">
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>До 1000 сообщений в месяц</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>5 ГБ облачного хранилища</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Базовые темы оформления</span>
+                            </li>
+                            <li class="feature-item disabled">
+                                <i class="fas fa-times"></i>
+                                <span>Расширенные настройки приватности</span>
+                            </li>
+                            <li class="feature-item disabled">
+                                <i class="fas fa-times"></i>
+                                <span>Приоритетная поддержка</span>
+                            </li>
+                        </ul>
+                        <button class="card-btn current-plan">
+                            Текущий план
+                        </button>
+                    </div>
+
+                    <!-- Премиум тариф -->
+                    <div class="pricing-card premium popular">
+                        <div class="popular-badge">Самый популярный</div>
+                        <div class="card-header">
+                            <h4>Premium</h4>
+                            <div class="price">
+                                <span class="amount monthly">299₽</span>
+                                <span class="amount yearly">269₽</span>
+                                <span class="period">/месяц</span>
+                            </div>
+                        </div>
+                        <ul class="features-list">
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Неограниченное количество сообщений</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>50 ГБ облачного хранилища</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Эксклюзивные темы и стикеры</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Расширенные настройки приватности</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Приоритетная поддержка 24/7</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Кастомные облачные анимации</span>
+                            </li>
+                        </ul>
+                        <button class="card-btn primary-btn">
+                            Начать пробный период
+                        </button>
+                    </div>
+
+                    <!-- Бизнес тариф -->
+                    <div class="pricing-card business">
+                        <div class="card-header">
+                            <h4>Бизнес</h4>
+                            <div class="price">
+                                <span class="amount monthly">599₽</span>
+                                <span class="amount yearly">539₽</span>
+                                <span class="period">/месяц</span>
+                            </div>
+                        </div>
+                        <ul class="features-list">
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Всё из Premium плана</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>200 ГБ облачного хранилища</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Административная панель</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Расширенная аналитика</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Интеграции с другими сервисами</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Персональный менеджер</span>
+                            </li>
+                        </ul>
+                        <button class="card-btn primary-btn">
+                            Начать пробный период
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Дополнительные преимущества -->
+            <section class="benefits-section">
+                <div class="section-header">
+                    <h3>Что вы получаете с Premium</h3>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h4>Увеличенное облако</h4>
+                        <p>Храните больше файлов, фото и видео в вашем персональном облаке</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4>Эксклюзивные темы</h4>
+                        <p>Доступ к уникальным темам оформления с облачной атрибутикой</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Приоритетная скорость</h4>
+                        <p>Ваши сообщения доставляются быстрее с приоритетной очередью</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h4>Улучшенная безопасность</h4>
+                        <p>Дополнительные уровни шифрования и настройки приватности</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="faq-section">
+                <div class="section-header">
+                    <h3>Частые вопросы</h3>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Можно ли отменить подписку в любое время?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, вы можете отменить подписку в любой момент. После отмены вы сохраните доступ к премиум-функциям до конца оплаченного периода.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Доступен ли пробный период?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, все платные тарифы включают 7-дневный бесплатный пробный период. Вам не будет списано средств до его окончания.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Какие способы оплаты принимаются?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Мы принимаем банковские карты (Visa, MasterCard, МИР), электронные кошельки (ЮMoney, Qiwi) и мобильные платежи.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Футер -->
+        <footer class="premium-footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Поддержка</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 cloudgramm. Все права защищены.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="premium.js"></script>
+</body>
+</html>
