@@ -1,8 +1,24 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password
 
 
 class Subscription(models.Model):
-    title = models.CharField('Описание', max_length=50)
+    BASIC = 'basic'
+    PREMIUM = 'premium'
+    PRO = 'pro'
+
+    SUBSCRIPTION_CHOICES = [
+        (BASIC, 'Basic'),
+        (PREMIUM, 'Premium'),
+        (PRO, 'Pro'),
+    ]
+    
+    title = models.CharField(
+        'Тип подписки', 
+        max_length=50,
+        choices=SUBSCRIPTION_CHOICES,
+        default=BASIC
+    )
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
     validity_period = models.DateField('Срок истечения')
 
@@ -16,19 +32,21 @@ class Subscription(models.Model):
         ]
 
     def __str__(self):
-        return self.title
+        return self.get_title_display()
 
 
 class User(models.Model):
-    username = models.CharField('Имя пользователя', max_length=50)
+    username = models.CharField('Имя пользователя', max_length=50, unique=True)
     password = models.CharField('Пароль', max_length=128)
-    email = models.EmailField('Email')                    
-    phone_number = models.CharField('Телефон', max_length=15)
+    email = models.EmailField('Email', unique=True)                    
+    phone_number = models.CharField('Телефон', max_length=15, blank=True)
     subscription = models.ForeignKey(
         Subscription,
         related_name='users',
         on_delete=models.SET_NULL,
-        null=True, blank=True                      
+        null=True, 
+        blank=True,
+        verbose_name='Подписка'                     
     )
 
     class Meta:
@@ -38,6 +56,12 @@ class User(models.Model):
         indexes = [
             models.Index(fields=['username']),
         ]
+
+    def save(self, *args, **kwargs):
+        # Хэшируем пароль при сохранении
+        if self.password and not self.password.startswith('pbkdf2_sha256$'):
+            self.password = make_password(self.password)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
@@ -51,19 +75,20 @@ class Message(models.Model):
     class Meta:
         verbose_name = 'Сообщение'
         verbose_name_plural = 'Сообщения'
-        ordering = ['sending_time']
+        ordering = ['-sending_time']
         indexes = [
             models.Index(fields=['text']),
             models.Index(fields=['sending_time']),
         ]
 
     def __str__(self):
-        return f'Сообщение от {self.user.username} в {self.sending_time}'
+        return f'Сообщение от {self.user.username}'
+
 
 class Chat(models.Model):
     users = models.ManyToManyField(User, related_name='user_chats')
-    messages = models.ManyToManyField(Message, related_name='chat_related_messages')
-    description = models.TextField('Описание', max_length=255)
+    messages = models.ManyToManyField(Message, related_name='chat_messages', blank=True)
+    description = models.TextField('Описание', max_length=255, blank=True)
     data = models.JSONField('Дополнительные данные', default=dict, blank=True)
     name = models.CharField('Название чата', max_length=50)
 
@@ -78,10 +103,11 @@ class Chat(models.Model):
     def __str__(self):
         return self.name
 
+
 class Channel(models.Model):
     user = models.ForeignKey(User, related_name='user_channels', on_delete=models.CASCADE)
-    messages = models.ManyToManyField(Message, related_name='channel_related_messages')
-    description = models.TextField('Описание', max_length=255)
+    messages = models.ManyToManyField(Message, related_name='channel_messages', blank=True)
+    description = models.TextField('Описание', max_length=255, blank=True)
     name = models.CharField('Название канала', max_length=50)
 
     class Meta:
