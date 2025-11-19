@@ -6,3 +6,6 @@ def main(request):
 
 def all(request):
     return render(request, 'all.html')
+
+def premium(request):
+    return render(request, 'premium.html')
