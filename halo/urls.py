@@ -3,6 +3,6 @@ from django.contrib.sitemaps.views import sitemap
 from .views import main, all, premium
 
 urlpatterns = [
-    path('all', all, name= 'all'),
+    path('', all, name= 'all'),
     path('premium', premium ,name = 'premium')
 ]
