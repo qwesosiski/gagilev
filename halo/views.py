@@ -5,7 +5,9 @@ def main(request):
     return render(request, 'main.html')
 
 def all(request):
-    return render(request, 'all.html')
+    users = User.objects.all().order_by('id')
+    user = users.first() if users.exists() else None
+    return render(request, 'all.html',{'User': user})
 
 def premium(request):
     return render(request, 'premium.html')
